@@ -1,6 +1,5 @@
 const request = require('request');
 const querystring = require('querystring');
-
 const hashString = require('./../helpers/hash-string');
 
 
@@ -25,7 +24,16 @@ module.exports={
         }
         console.log('===== hash', hash);
         console.log('===== access_token', access_token);
-        reply.redirect('/');
+
+        // let session = req.state.session;
+
+          const session = {
+            access_token: hash,
+            last: Date.now()
+          }
+        
+
+        return reply.redirect('/').state('samatar-piotr-cookie', session);
       });
 
     });
