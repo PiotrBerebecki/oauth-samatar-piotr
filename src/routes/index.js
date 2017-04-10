@@ -1,3 +1,4 @@
 module.exports = [
-  require('./home.js')
+  require('./home'),
+  require('./login'),
 ];

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/start.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/start.js",
+    "test": "tape test/test.js | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
     "inert": "^4.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   }
 }
