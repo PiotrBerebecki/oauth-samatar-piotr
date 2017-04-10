@@ -1,5 +1,6 @@
 module.exports = [
   require('./home'),
   require('./login'),
-  require('./welcome')
+  require('./welcome'),
+  require('./profile'),
 ];

@@ -18,11 +18,9 @@ server.connection({
 server.register([inert], (err)=>{
   if (err) throw err;
 
-  server.state('samatar-piotr-cookie', {
-    ttl: 1000*60*3,
-    isSecure: true,
-    path:'/',
-    encoding: 'base64json',
+  server.state('samatar_piotr_cookie', {
+    ttl: 1000*60*60*24,
+    encoding: 'base64json'
   });
 
   server.route(routes);

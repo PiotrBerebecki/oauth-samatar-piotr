@@ -28,10 +28,10 @@ module.exports={
         // let session = req.state.session;
 
           const session = {
-            access_token: hash,
+            access_token: access_token, // hash could be used here but we don't know if we can decrypt it!
             last: Date.now()
-          }
-        
+          };
+
 
         return reply.redirect('/').state('samatar-piotr-cookie', session);
       });
