@@ -18,22 +18,20 @@ module.exports={
       const githubQueries = querystring.parse(body);
       const { access_token } = githubQueries;
 
+
+      // hash the access_token
       hashString(access_token, (hashingErr, hash) => {
         if (hashingErr) {
           return reply('Sorry, problem processing your authorisation');
         }
-        console.log('===== hash', hash);
-        console.log('===== access_token', access_token);
 
-        // let session = req.state.session;
+        const session = {
+          access_token: hash,
+          last: Date.now()
+        };
 
-          const session = {
-            access_token: access_token, // hash could be used here but we don't know if we can decrypt it!
-            last: Date.now()
-          };
-
-
-        return reply.redirect('/').state('samatar-piotr-cookie', session);
+        // save the ahashedccess_token to
+        return reply.redirect('/').state('samatar_piotr_cookie', session);
       });
 
     });

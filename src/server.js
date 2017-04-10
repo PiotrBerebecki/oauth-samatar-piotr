@@ -20,11 +20,11 @@ server.register([inert], (err)=>{
 
   server.state('samatar_piotr_cookie', {
     ttl: 1000*60*60*24,
-    encoding: 'base64json'
+    encoding: 'base64json',
+    path: '/'
   });
 
   server.route(routes);
-
 
 });
 
