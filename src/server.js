@@ -11,15 +11,7 @@ const validateUser = require('./helpers/validate-user');
 require('env2')('./config.env');
 
 
-const options = {
-    connections: {
-        state: {
-            isSameSite: 'Lax'
-        }
-    }
-};
-
-const server = new hapi.Server(options);
+const server = new hapi.Server();
 
 
 server.connection({
