@@ -3,7 +3,7 @@ module.exports = {
   path: '/profile',
   handler: (request, reply) => {
 
-    console.log('===== request.state', request.state.samatar_piotr_cookie.access_token);
+    console.log('===== request', request.auth);
 
     reply('profile page');
   }

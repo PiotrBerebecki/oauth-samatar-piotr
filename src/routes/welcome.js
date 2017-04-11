@@ -19,11 +19,9 @@ module.exports={
       const githubQueries = querystring.parse(body);
       const { access_token } = githubQueries;
 
-      // hash the access_token
+      req.cookieAuth.set({access_token});
 
-      // save the ahashedccess_token to
-      return reply.redirect('/').state('samatar_piotr_cookie', session);
-
+      return reply.redirect('/profile');
     });
   }
 }

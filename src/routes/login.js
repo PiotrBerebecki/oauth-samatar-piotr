@@ -1,4 +1,4 @@
-require('env2')('config.env');
+require('env2')('./config.env');
 const client_id = process.env.CLIENT_ID;
 
 

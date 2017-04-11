@@ -2,8 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const hapi = require('hapi');
 const inert = require('inert');
-const server = new hapi.Server();
+const cookieAuthModule = require('hapi-auth-cookie');
+
 const routes = require('./routes');
+
+require('env2')('./config.env');
+
+
+const server = new hapi.Server();
 
 
 server.connection({
@@ -15,13 +21,13 @@ server.connection({
 });
 
 
-server.register([inert], (err)=>{
+server.register([inert, cookieAuthModule], (err) => {
   if (err) throw err;
 
-  server.state('samatar_piotr_cookie', {
-    ttl: 1000*60*60*24,
-    encoding: 'base64json',
-    path: '/'
+  server.auth.strategy('base', 'cookie', 'optional', {
+    password: process.env.COOKIE_PASSWORD,
+    cookie: 'samatar_piotr_cookie',
+    ttl: 24 * 60 * 60 * 1000
   });
 
   server.route(routes);
