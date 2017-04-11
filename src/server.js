@@ -9,7 +9,15 @@ const routes = require('./routes');
 require('env2')('./config.env');
 
 
-const server = new hapi.Server();
+const options = {
+    connections: {
+        state: {
+            isSameSite: 'Lax'
+        }
+    }
+};
+
+const server = new hapi.Server(options);
 
 
 server.connection({
@@ -24,7 +32,7 @@ server.connection({
 server.register([inert, cookieAuthModule], (err) => {
   if (err) throw err;
 
-  server.auth.strategy('base', 'cookie', 'optional', {
+  server.auth.strategy('base', 'cookie', 'required', {
     password: process.env.COOKIE_PASSWORD,
     cookie: 'samatar_piotr_cookie',
     ttl: 24 * 60 * 60 * 1000
