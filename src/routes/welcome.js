@@ -7,6 +7,7 @@ module.exports={
   method: 'GET',
   path: '/welcome',
   handler: (req, reply) => {
+
     const query = req.query;
     const options = {
       method: 'POST',
@@ -18,21 +19,10 @@ module.exports={
       const githubQueries = querystring.parse(body);
       const { access_token } = githubQueries;
 
-
       // hash the access_token
-      hashString(access_token, (hashingErr, hash) => {
-        if (hashingErr) {
-          return reply('Sorry, problem processing your authorisation');
-        }
 
-        const session = {
-          access_token: hash,
-          last: Date.now()
-        };
-
-        // save the ahashedccess_token to
-        return reply.redirect('/').state('samatar_piotr_cookie', session);
-      });
+      // save the ahashedccess_token to
+      return reply.redirect('/').state('samatar_piotr_cookie', session);
 
     });
   }
