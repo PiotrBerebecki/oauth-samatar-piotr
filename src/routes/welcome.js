@@ -1,7 +1,7 @@
 const request = require('request');
 const querystring = require('querystring');
 const hashString = require('./../helpers/hash-string');
-
+const jwt = require('jsonwebtoken');
 
 module.exports={
   method: 'GET',
@@ -20,13 +20,38 @@ module.exports={
       const githubQueries = querystring.parse(body);
       const { access_token } = githubQueries;
 
-      if (access_token) {
-        req.cookieAuth.set({access_token});
-        return reply.redirect('/profile');
-        // return reply.redirect('/profile').state('samatar_piotr_cookie', access_token, {path: '/'});
-      }
 
-      reply.redirect('/');
+        const headers = {
+          'User-Agent': 'oauth_github_jwt',
+          Authorization: `token ${access_token}`
+          };
+
     });
-  }
+        // request.get({url: 'https://api.github.com/user', headers: headers}, (error, response, body)=>{
+        // //   if (error) {
+        // //     console.log(error);
+        // //     return;
+        // //   }
+        // // //   const secret = process.env.CLIENT_SECRET;
+        // // //
+        //       const bodyParsed = JSON.parse(body);
+        //
+        //       let payload = {
+        //         'user': {
+        //           'username': bodyParsed.login,
+        //           'img_url': bodyParsed.avatar_url,
+        //           'user_id': bodyParsed.id
+        //         },
+        //         accessToken: access_token
+        //       }
+        //       jwt.sign(payload, secret, options, callback);
+        // })
+
+  //       // // return reply.redirect('/profile').state('samatar_piotr_cookie', access_token, {path: '/'});
+  //     }
+  //
+  //     reply.redirect('/');
+  //   });
+  // }
+}
 }
