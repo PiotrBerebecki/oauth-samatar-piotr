@@ -23,6 +23,7 @@ module.exports={
       if (access_token) {
         req.cookieAuth.set({access_token});
         return reply.redirect('/profile');
+        // return reply.redirect('/profile').state('samatar_piotr_cookie', access_token, {path: '/'});
       }
 
       reply.redirect('/');
