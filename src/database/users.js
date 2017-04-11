@@ -1,7 +1,7 @@
 module.exports = {
-  1: {
-    id: '1',
-    name: 'Mike Jones',
-    username: 'MikeJones'
-  }
+  17753038: {
+    id: 17753038,
+    name: 'Piotr Berebecki',
+    username: 'PiotrBerebecki'
+  },
 };
