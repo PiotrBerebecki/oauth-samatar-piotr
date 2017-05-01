@@ -45,6 +45,7 @@ server.register([inert, cookieAuthModule, jwtAuth], (err) => {
   // server.auth.strategy('base', 'cookie', 'required', {
   //   password: process.env.COOKIE_PASSWORD,
   //   cookie: 'samatar_piotr_cookie',
+  //   isSameSite: false,
   //   ttl: 24 * 60 * 60 * 1000
   // });
 
